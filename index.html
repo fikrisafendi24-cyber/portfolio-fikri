@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fikri Safendi | Portfolio</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#050b14;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:#00aaff;
+  filter:blur(180px);
+  opacity:.15;
+  top:-200px;
+  left:-150px;
+  z-index:-2;
+  animation:float 8s infinite alternate;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:450px;
+  height:450px;
+  background:#0066ff;
+  filter:blur(180px);
+  opacity:.12;
+  bottom:-200px;
+  right:-150px;
+  z-index:-2;
+  animation:float2 10s infinite alternate;
+}
+
+@keyframes float{
+  from{transform:translate(0,0)}
+  to{transform:translate(120px,80px)}
+}
+
+@keyframes float2{
+  from{transform:translate(0,0)}
+  to{transform:translate(-100px,-70px)}
+}
+
+/* NAVBAR */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  backdrop-filter:blur(15px);
+  background:rgba(5,11,20,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+nav{
+  max-width:1100px;
+  margin:auto;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  color:#38bdf8;
+  letter-spacing:2px;
+}
+
+nav ul{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:2px;
+  background:#38bdf8;
+  transition:.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* SECTION */
+
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:110px 25px;
+}
+
+/* HERO */
+
+#home{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero{
+  max-width:800px;
+  animation:heroIn 1.2s ease;
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid #38bdf8;
+  border-radius:30px;
+  color:#38bdf8;
+  margin-bottom:20px;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    box-shadow:0 0 20px rgba(56,189,248,.3);
+  }
+}
+
+h1{
+  font-size:clamp(45px,8vw,80px);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+h1 span{
+  color:#38bdf8;
+  text-shadow:0 0 25px rgba(56,189,248,.35);
+}
+
+.hero p{
+  color:#aebed0;
+  font-size:18px;
+  max-width:680px;
+}
+
+.buttons{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:13px 23px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.primary{
+  background:#38bdf8;
+  color:#06101c;
+}
+
+.primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(56,189,248,.3);
+}
+
+.secondary{
+  border:1px solid #38bdf8;
+  color:#38bdf8;
+}
+
+.secondary:hover{
+  background:#38bdf8;
+  color:#06101c;
+  transform:translateY(-4px);
+}
+
+/* TITLE */
+
+.section-title{
+  font-size:38px;
+  margin-bottom:40px;
+}
+
+.section-title span{
+  color:#38bdf8;
+}
+
+/* CARDS */
+
+.about{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.card{
+  background:rgba(13,27,45,.65);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:28px;
+  transition:.4s;
+  backdrop-filter:blur(10px);
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:#38bdf8;
+  box-shadow:0 15px 40px rgba(0,170,255,.12);
+}
+
+.card h3{
+  color:#38bdf8;
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+.card p{
+  color:#aebed0;
+}
+
+/* SKILLS */
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.skill{
+  padding:11px 17px;
+  border-radius:30px;
+  background:#0c2036;
+  border:1px solid #1d496d;
+  color:#dceeff;
+  transition:.3s;
+  opacity:0;
+  transform:scale(.8);
+}
+
+.skill.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.skill:hover{
+  background:#38bdf8;
+  color:#06101c;
+  transform:translateY(-4px);
+}
+
+/* TIMELINE */
+
+.timeline{
+  border-left:2px solid #38bdf8;
+  padding-left:28px;
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:35px;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:.7s;
+}
+
+.timeline-item.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#38bdf8;
+  left:-36px;
+  top:7px;
+  box-shadow:0 0 15px #38bdf8;
+}
+
+.timeline-item h3{
+  color:#38bdf8;
+  margin-bottom:6px;
+}
+
+.timeline-item p{
+  color:#aebed0;
+}
+
+/* CONTACT */
+
+.contact{
+  text-align:center;
+  background:rgba(13,27,45,.7);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:25px;
+  padding:60px 25px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.contact p{
+  color:#aebed0;
+  margin:8px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#71849a;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  nav ul{
+    display:none;
+  }
+
+  h1{
+    font-size:48px;
+  }
+
+  section{
+    padding:90px 20px;
+  }
+
+  .about{
+    grid-template-columns:1fr;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+
+<div class="logo">FIKRI.</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">Tentang</a></li>
+<li><a href="#experience">Pengalaman</a></li>
+<li><a href="#skills">Skill</a></li>
+<li><a href="#contact">Kontak</a></li>
+</ul>
+
+</nav>
+</header>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<div class="badge">
+ Teknik Instalasi Tenaga Listrik
+</div>
+
+<h1>
+Fikri <span>Safendi</span>
+</h1>
+
+<p>
+Lulusan SMK Teknik Instalasi Tenaga Listrik dengan
+pengalaman PKL di bidang maintenance dan ketertarikan
+pada bidang listrik, elektro, teknisi, serta maintenance industri.
+</p>
+
+<div class="buttons">
+
+<a href="#about" class="btn primary">
+Lihat Portfolio
+</a>
+
+<a href="https://wa.me/6283119269618"
+target="_blank"
+class="btn secondary">
+Hubungi Saya
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">
+Tentang <span>Saya</span>
+</h2>
+
+<div class="about">
+
+<div class="card reveal">
+
+<h3>Profil</h3>
+
+<p>
+Saya merupakan lulusan SMK Teknik Instalasi Tenaga Listrik
+yang memiliki minat pada bidang kelistrikan, maintenance,
+dan pekerjaan teknisi.
+</p>
+
+<br>
+
+<p>
+Saya memiliki karakter disiplin, bertanggung jawab,
+teliti dan memiliki kemauan belajar yang tinggi.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<h3>Tujuan Karier</h3>
+
+<p>
+Saya ingin mengembangkan kemampuan di bidang listrik
+dan maintenance industri serta mendapatkan pengalaman
+kerja untuk menjadi teknisi yang profesional dan kompeten.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+<h2 class="section-title">
+Pengalaman <span>Saya</span>
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item reveal">
+
+<h3>PKL — PT Krakatau Sarana Properti</h3>
+
+<p>Maintenance • 3 Bulan</p>
+
+<p>
+Membantu kegiatan maintenance dan perbaikan mesin
+wahana kolam renang serta membantu pengecekan kondisi
+peralatan agar dapat beroperasi dengan baik.
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<h3>Paskibra</h3>
+
+<p>
+Aktif dalam organisasi Paskibra dan mengikuti berbagai
+perlombaan LKBB.
+</p>
+
+<p>
+Berpengalaman sebagai Ketua Pelaksana sehingga belajar
+tentang kerja sama tim, komunikasi, tanggung jawab,
+dan penyelesaian masalah.
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<h3>Pelatihan / Sertifikasi LSP</h3>
+
+<p>
+Mengikuti program sertifikasi profesi sebagai bagian
+dari pengembangan kompetensi dan persiapan memasuki
+dunia kerja.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2 class="section-title">
+Keahlian <span>Saya</span>
+</h2>
+
+<div class="skills">
+
+<div class="skill reveal"> Instalasi Listrik</div>
+<div class="skill reveal"> Wiring Diagram</div>
+<div class="skill reveal"> Rangkaian Listrik</div>
+<div class="skill reveal"> Maintenance</div>
+<div class="skill reveal"> Troubleshooting Dasar</div>
+<div class="skill reveal"> Multimeter</div>
+<div class="skill reveal"> K3</div>
+<div class="skill reveal"> Kerja Sama Tim</div>
+<div class="skill reveal"> Problem Solving</div>
+<div class="skill reveal"> Disiplin</div>
+<div class="skill reveal"> Bertanggung Jawab</div>
+
+</div>
+
+</section>
+
+
+<!-- VALUES -->
+
+<section>
+
+<h2 class="section-title">
+Nilai <span>Lebih Saya</span>
+</h2>
+
+<div class="about">
+
+<div class="card reveal">
+<h3> Kelistrikan</h3>
+<p>
+Memiliki dasar pengetahuan instalasi listrik dan
+kemampuan membaca rangkaian serta wiring diagram.
+</p>
+</div>
+
+<div class="card reveal">
+<h3> Maintenance</h3>
+<p>
+Memiliki pengalaman praktik membantu maintenance
+dan perbaikan mesin saat PKL.
+</p>
+</div>
+
+<div class="card reveal">
+<h3> Teamwork</h3>
+<p>
+Terbiasa bekerja sama dalam tim melalui pengalaman
+organisasi dan kegiatan Paskibra.
+</p>
+</div>
+
+<div class="card reveal">
+<h3> Tanggung Jawab</h3>
+<p>
+Berusaha menyelesaikan tugas dengan disiplin,
+teliti dan bertanggung jawab.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact">
+
+<h2 class="section-title">
+Mari <span>Terhubung</span>
+</h2>
+
+<p>
+Terbuka untuk kesempatan kerja di bidang
+listrik, elektro, teknisi dan maintenance.
+</p>
+
+<p> fikrisafendi24@gmail.com</p>
+
+<p> 0831-1926-9618</p>
+
+<div class="buttons" style="justify-content:center">
+
+<a href="mailto:fikrisafendi24@gmail.com"
+class="btn primary">
+Kirim Email
+</a>
+
+<a href="https://wa.me/6283119269618"
+target="_blank"
+class="btn secondary">
+WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 Fikri Safendi — Portfolio
+</footer>
+
+
+<script>
+
+/* SCROLL ANIMATION */
+
+const observer = new IntersectionObserver(
+(entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},
+{
+  threshold:.15
+});
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>{
+  observer.observe(el);
+});
+
+
+/* SKILL ANIMATION DELAY */
+
+const skills=document.querySelectorAll(".skill");
+
+skills.forEach((skill,index)=>{
+  skill.style.transitionDelay=(index*0.08)+"s";
+});
+
+</script>
+
+</body>
+</html>
